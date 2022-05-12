@@ -19,6 +19,10 @@ public class Location {
 
     // Custom toString, equals, and hashCode methods:
 
+    public Location(String value) {
+        this();
+        this.value = value;
+    }
     @Override
     public String toString() {
         return value;
