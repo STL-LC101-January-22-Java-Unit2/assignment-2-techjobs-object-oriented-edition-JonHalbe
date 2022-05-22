@@ -17,9 +17,92 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
+    public Job() {
+        id = nextId;
+        nextId++;
+    }
+
+
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this();
+        this.name = name;
+        this.employer = employer;
+        this.location = location;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
+    }
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
+    public CoreCompetency getCoreCompetency() {
+        return coreCompetency;
+    }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+    public void setCoreCompetency(CoreCompetency coreCompetency) {
+        this.coreCompetency = coreCompetency;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Employer getEmployer() {
+        return employer;
+    }
+
+    public PositionType getPositionType() {
+        return positionType;
+    }
+
+    public void setPositionType(PositionType positionType) {
+        this.positionType = positionType;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId(){
+        return id;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Job)) return false;
+        Job job = (Job) o;
+        return id == job.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "\n" +
+                "ID: " + id +
+                "\nName: " + name +
+                "\nEmployer: " + employer.getValue() +
+                "\nLocation: " + location.getValue() +
+                "\nPosition Type: " + positionType.getValue() +
+                "\nCore Competency: " + coreCompetency.getValue() +
+                "\n";
+
+    }
+
 }
